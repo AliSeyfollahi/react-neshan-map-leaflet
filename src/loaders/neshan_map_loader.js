@@ -4,6 +4,11 @@ const DEFAULT_URL = `${BASE_URL}/sdk/leaflet/1.4.0/leaflet.js`;
 export default (props) => {
   const createScript = () => {
     const { onError, onLoad } = props;
+    if (window.L) {
+      if (onLoad) onLoad();		
+      return;
+    }
+
     const script = document.createElement("script");
 
     script.src = DEFAULT_URL;
