@@ -5,9 +5,9 @@ export default (props) => {
   const createScript = () => {
     const { onError, onLoad } = props;
     if (window.L) {
-			if (onLoad) onLoad();		
-			return;
-		}
+      if (onLoad) onLoad();		
+      return;
+    }
 
     const script = document.createElement("script");
 
