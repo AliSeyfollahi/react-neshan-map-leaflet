@@ -1,40 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import * as serviceWorker from "./serviceWorker";
-import NeshanMap from "./NeshanMap";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <NeshanMap
-      options={{
-        key: "YOUR_API_KEY",
-        maptype: "dreamy",
-        poi: true,
-        traffic: false,
-        center: [35.699739, 51.338097],
-        zoom: 13,
-      }}
-      onInit={(L, myMap) => {
-        let marker = L.marker([35.699739, 51.338097])
-          .addTo(myMap)
-          .bindPopup("<b>Hello world!</b><br>I am a popup.");
-        myMap.on("click", function (e) {
-          marker.setLatLng(e.latlng);
-        });
-
-        L.circle([35.699739, 51.348097], {
-          color: "red",
-          fillColor: "#f03",
-          fillOpacity: 0.5,
-          radius: 500,
-        }).addTo(myMap);
-      }}
-    />
+    <App />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
