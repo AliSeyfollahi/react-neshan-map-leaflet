@@ -33,7 +33,7 @@ const NeshanMap = (props) => {
         console.error("Neshan Maps Error: This page didn't load Neshan Maps correctly");
       },
     });
-  });
+  },[]);
   return <div ref={mapEl} style={{ ...defaultStyle, ...style }} />;
 };
 

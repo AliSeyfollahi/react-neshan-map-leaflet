@@ -11,15 +11,17 @@ export default (props) => {
     style.rel = "stylesheet";
     document.head.appendChild(style);
 
+    if (window.L) {
+      if (onLoad) onLoad();		
+      return;
+    }
+
     const script = document.createElement("script");
-
     script.src = DEFAULT_URL;
-
     script.onload = () => {
       if (onLoad) onLoad();
       return;
     };
-
     script.onerror = () => {
       if (onError) onError();
       return;
