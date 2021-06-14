@@ -1,7 +1,7 @@
 {
   "name": "react-neshan-map-leaflet",
   "description": "⚛️ React component for 🍃 Neshan Leaflet map.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": false,
   "main": "dist/NeshanMap.js",
   "module": "dist/NeshanMap.js",
