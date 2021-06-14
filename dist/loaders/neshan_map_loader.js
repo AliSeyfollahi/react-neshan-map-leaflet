@@ -1,5 +1,5 @@
 const BASE_URL = "https://static.neshan.org";
-const DEFAULT_URL = `${BASE_URL}/sdk/leaflet/1.4.0/leaflet.js`;
+const DEFAULT_URL_SCRIPT = `${BASE_URL}/sdk/leaflet/1.4.0/leaflet.js`;
 const DEFAULT_URL_STYLE = `${BASE_URL}/sdk/leaflet/1.4.0/leaflet.css`;
 export default (props => {
   const createScriptStyle = () => {
@@ -21,20 +21,20 @@ export default (props => {
       return;
     }
 
-    const script = document.createElement("script");
-    script.src = DEFAULT_URL;
-
-    script.onload = () => {
+    const script = document.body.querySelector(`script[src="${DEFAULT_URL_SCRIPT}"]`) || document.createElement("script");
+    script.addEventListener("load", () => {
       if (onLoad) onLoad();
       return;
-    };
-
-    script.onerror = () => {
+    });
+    script.addEventListener("error", () => {
       if (onError) onError();
       return;
-    };
+    });
 
-    document.body.appendChild(script);
+    if (!script.src) {
+      script.src = DEFAULT_URL_SCRIPT;
+      document.body.appendChild(script);
+    }
   };
 
   return createScriptStyle();
